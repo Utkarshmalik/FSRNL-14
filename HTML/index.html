@@ -6,6 +6,7 @@
        <title>
            Our basic web app
        </title>
+       <link rel="stylesheet" type="text/css" href="style.css">
    </head>
 
    <style>
@@ -14,6 +15,7 @@
            background-color: teal;
            border: 3px solid red;  
            margin:5px;
+        
        }
 
        #myCourseHeader{
@@ -24,13 +26,46 @@
        }
 
        .section{
+           padding:15px;
            border:2px solid black;
+           margin:40px;
+           display: block;
+           position: relative;
        }
+    
+       .message{
+           border:1px solid lightslategray;
+           background-color: lightskyblue;
+           text-align: center;
+           color: blue;
+           position: fixed;
+           bottom:0px;
+           width:200px;
+           right: 0px;
+       }
+
+       .navbar{
+           border: 3px solid gray;
+           background-color: blue;
+           color: white;
+           text-align: center;
+           padding: 5px;
+           position: sticky;
+           top:0px;
+       }
+
+       .courseMessage
+       {
+           position: absolute;
+           bottom:0px;
+           right:0px;
+       }
+
 
    </style>
 
    <body>
-       <h1>Hello I am here</h1>
+       <!-- <h1>Hello I am here</h1>
        <h2>Hello I am here</h2>
        <h3>Hello I am here</h3>
        <h4>Hello I am here</h4>
@@ -72,7 +107,19 @@
         <h1 style="border: 3px solid red;" >How are you</h1>
         <span style="border: 3px solid green" > I am very good</span>
         <span style="border: 3px  solid yellow"> I am very good too</span>
+    </div> -->
+
+    <div>
+        <p>Covid 19 instructions</p>
+        <p>Covid 19 instructions</p>
+        <p>Covid 19 instructions</p>
+        <p>Covid 19 instructions</p>
+        <p>Covid 19 instructions</p>
     </div>
+
+    <div class="navbar">Navbar</div>
+
+    <div class="message"><p>ChatBox</p></div>
 
 
     <div class="section">
@@ -98,6 +145,26 @@
         <h2>MongoDB</h2>
         <p>Mongodb is a NOSQL database</p>
     </div>
+
+    <div class="course">
+        <h2>MongoDB</h2>
+        <p>Mongodb is a NOSQL database</p>
+    </div>
+
+    <div class="course">
+        <h2>MongoDB</h2>
+        <p>Mongodb is a NOSQL database</p>
+    </div>
+    <div class="course">
+        <h2>MongoDB</h2>
+        <p>Mongodb is a NOSQL database</p>
+    </div>
+    <div class="course">
+        <h2>MongoDB</h2>
+        <p>Mongodb is a NOSQL database</p>
+    </div>
+
+    <span class="courseMessage" >Click here for more courses</span>
 
    </div>
    
@@ -135,7 +202,8 @@
        <label for="css" >Alto</label> <br>
 
        <input type="submit"/>
-       
+
+    
 
 
    </form>
