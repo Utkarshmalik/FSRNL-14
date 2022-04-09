@@ -11,206 +11,62 @@
 
    <style>
 
-       .course{
-           background-color: teal;
-           border: 3px solid red;  
-           margin:5px;
-        
+       .main-container{
+           display: flex;
+           flex-direction: row;
+           justify-content:space-between;
+           align-items: center;
+           border:3px solid blue;
+           height:800px;
+        }
+
+       .box{
+           border:3px solid red;
+           margin: 5px;
+           padding:5px;
+           height: 100px;
+           flex:1;
        }
 
-       #myCourseHeader{
-           background-color: lightgreen;
-           color: black;
-           text-align: center;
+       .box1{
+
+        flex:2;
 
        }
 
-       .section{
-           padding:15px;
-           border:2px solid black;
-           margin:40px;
-           display: block;
-           position: relative;
-       }
-    
-       .message{
-           border:1px solid lightslategray;
-           background-color: lightskyblue;
-           text-align: center;
-           color: blue;
-           position: fixed;
-           bottom:0px;
-           width:200px;
-           right: 0px;
+       .box2{
+
+        flex:3;
+
        }
 
-       .navbar{
-           border: 3px solid gray;
-           background-color: blue;
-           color: white;
-           text-align: center;
-           padding: 5px;
-           position: sticky;
-           top:0px;
+       .box3{
+
+        flex:4;
        }
 
-       .courseMessage
-       {
-           position: absolute;
-           bottom:0px;
-           right:0px;
+       .box4{
+
+
        }
 
+       .box5{
+
+       }
 
    </style>
 
    <body>
-       <!-- <h1>Hello I am here</h1>
-       <h2>Hello I am here</h2>
-       <h3>Hello I am here</h3>
-       <h4>Hello I am here</h4>
-       <h5>Hello I am here</h5>
-       <h6>Hello I am here</h6>
+       <div class="">FlexBox</div>
 
-       <p> This is some paragraph </p>
+       <div class="main-container">
+           <div class="box box1" >Box A</div>
+           <div class="box box2" >Box B</div>
+           <div class="box box3" >Box C</div>
+           <div class="box box4">Box D</div>
+           <div class="box box5">Box E</div>
+       </div>
 
-       <img src="image.jpeg" alt="An Elephant" width="350" height="250"/>
-
-       <b>This is bold text</b>
-       <br/>
-       <strong>This is bold text</strong>
-
-       <i> This is a italic tag</i>
-
-       <ul>
-           <li>HTML</li>
-           <li>CSS</li>
-           <li>JS</li>
-           <li>React</li>
-           <li>Nodejs</li>
-           <li>MongoDB</li>
-       </ul>
-
-       <ol>
-           <li>Milk</li>
-           <li>Tea</li>
-           <li>Coffee</li>
-       </ol>
-
-    
-
-    <p>Hi How are you</p>
-    <p>I am good </p>
-    <p>Say Hii </p>
-
-    <div>
-        <h1 style="border: 3px solid red;" >How are you</h1>
-        <span style="border: 3px solid green" > I am very good</span>
-        <span style="border: 3px  solid yellow"> I am very good too</span>
-    </div> -->
-
-    <div>
-        <p>Covid 19 instructions</p>
-        <p>Covid 19 instructions</p>
-        <p>Covid 19 instructions</p>
-        <p>Covid 19 instructions</p>
-        <p>Covid 19 instructions</p>
-    </div>
-
-    <div class="navbar">Navbar</div>
-
-    <div class="message"><p>ChatBox</p></div>
-
-
-    <div class="section">
-    
-    <h1 id="myCourseHeader">My Courses</h1>
-    
-    <div class="course">
-        <h2>Javascript</h2>
-        <p>Jaavascript is single threaded language</p>
-    </div>
-
-    <div class="course">
-        <h2>Nodejs</h2>
-        <p>NodeJS is a JS runtime enviironment</p>
-    </div>
-
-    <div class="course">
-        <h2>React</h2>
-        <p>React has a concept of virtual DOM</p>
-    </div>
-
-    <div class="course">
-        <h2>MongoDB</h2>
-        <p>Mongodb is a NOSQL database</p>
-    </div>
-
-    <div class="course">
-        <h2>MongoDB</h2>
-        <p>Mongodb is a NOSQL database</p>
-    </div>
-
-    <div class="course">
-        <h2>MongoDB</h2>
-        <p>Mongodb is a NOSQL database</p>
-    </div>
-    <div class="course">
-        <h2>MongoDB</h2>
-        <p>Mongodb is a NOSQL database</p>
-    </div>
-    <div class="course">
-        <h2>MongoDB</h2>
-        <p>Mongodb is a NOSQL database</p>
-    </div>
-
-    <span class="courseMessage" >Click here for more courses</span>
-
-   </div>
-   
-
-   <form>
-
-       <label for="firstName" >First Name:</label><br/>
-       <input type="text" name="fName" id="firstName"/> <br/><br/>
-       <label for="lastName">Last Name:</label><br/>
-       <input type="text" name="lName" id="lastName"/> <br/>
-
-       <h4> Select your favourate language</h4>
-
-       <input type="radio" id="html" name="favourateLanguage" value="HTML" >
-       <label for="hrml" >HTML</label> <br>
-
-       <input type="radio" id="js" name="favourateLanguage" value="JS" >
-       <label for="js" >Javascript</label> <br>
-       
-       <input type="radio" id="css" name="favourateLanguage" value="CSS" >
-       <label for="css" >CSS</label> <br>
-
-
-
-
-       <h4> Select cars you like</h4>
-
-       <input type="checkbox" id="car1" name="Car1" value="Audi" >
-       <label for="hrml" >Audi</label> <br>
-
-       <input type="checkbox" id="car2" name="Car2" value="Creta" >
-       <label for="js" >Creta</label> <br>
-       
-       <input type="checkbox" id="car3" name="Car3" value="Alto" >
-       <label for="css" >Alto</label> <br>
-
-       <input type="submit"/>
-
-    
-
-
-   </form>
-
-   
-
-   
    </body>
 
 </html>
