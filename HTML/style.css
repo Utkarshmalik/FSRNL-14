@@ -26,19 +26,17 @@
 
 }
 
-.main-tags ul
-{
+.main-tags ul{
     width:100%;
     display: flex;
     list-style: none;
     justify-content: space-evenly;
     align-items: flex-start;
-
 }
 
 
-.main-tags ul li
-{
+
+.main-tags ul li{
     border:1px solid black;
     border-radius:3px;
     padding:10px 20px;
@@ -53,8 +51,7 @@
 
 
 
-#content
-{
+#content{
     width:70vw;
     min-width: 700px;
     border:3px solid black;
@@ -102,6 +99,7 @@
       display: flex;
       flex-direction: column;
       padding:10px;
+      min-width:150px;
 
   }
 
@@ -110,4 +108,10 @@
   {
       margin-top:5px;
       padding:2px;
+  }
+
+  .todo-list-input{
+      border:2px solid black;
+      padding:10px;
+      display: none;
   }
