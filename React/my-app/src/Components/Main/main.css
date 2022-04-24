@@ -1,4 +1,11 @@
 .main-content{
 
     border:3px solid black;
+    min-height:100vh;
+    text-align: center;
+}
+
+.spinner-div{
+    text-align: center;
+    padding:10px;
 }

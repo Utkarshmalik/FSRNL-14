@@ -2,9 +2,12 @@ import React from "react";
 import {Form, Button} from 'react-bootstrap';
 import './Login.css';
 
+function onClick()
+{
+  this.setState({isLoggedIn:false});
+}
 
-
-function LoginForm(){
+function LoginForm(props){
     return (
         <div className="login-form-div">
     <Form className="login-form-comp" >
@@ -23,7 +26,7 @@ function LoginForm(){
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button onClick={props.onLogin}  variant="primary">
           Submit
         </Button>
       </Form>

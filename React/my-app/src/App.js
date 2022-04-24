@@ -18,7 +18,6 @@ import React from 'react';
 class App extends React.Component{
 
   constructor(){
-    console.log("inside constructor");
     super();
     this.state={isLoggedIn:false};
   }
@@ -30,8 +29,10 @@ class App extends React.Component{
     this.setState({isLoggedIn:true});
   }
 
+
+  
+
   render(){
-    console.log("inside render");
     return (<div>
       {
         (this.state.isLoggedIn)?
@@ -41,12 +42,7 @@ class App extends React.Component{
           <Footer/>
       </>
       ):
-      <div>
-        <h1>Login Form</h1>
-        <input type="text" />
-        <input type="password" />
-        <button onClick={()=>this.onLogin()} >Login</button>
-        </div>
+      <Login onLogin={()=>this.onLogin()} />
       }
   </div>);
   }

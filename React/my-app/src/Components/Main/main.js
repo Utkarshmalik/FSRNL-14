@@ -1,16 +1,59 @@
 import React from 'react';
 import './main.css';
 import UsersList from '../UsersList/UsersList';
+import Spinner  from '../Common/Spinner/spinner';
 
-const data=[{"id":"60d0fe4f5311236168a109cc","title":"ms","firstName":"Adina","lastName":"Barbosa","picture":"https://randomuser.me/api/portraits/med/women/28.jpg"},{"id":"60d0fe4f5311236168a109d2","title":"mr","firstName":"Evan","lastName":"Carlson","picture":"https://randomuser.me/api/portraits/med/men/80.jpg"},{"id":"60d0fe4f5311236168a109d3","title":"mr","firstName":"Friedrich-Karl","lastName":"Brand","picture":"https://randomuser.me/api/portraits/med/men/7.jpg"},{"id":"60d0fe4f5311236168a109d7","title":"mr","firstName":"Leevi","lastName":"Savela","picture":"https://randomuser.me/api/portraits/med/men/67.jpg"},{"id":"60d0fe4f5311236168a109d8","title":"mrs","firstName":"Karoline","lastName":"Sviggum","picture":"https://randomuser.me/api/portraits/med/women/61.jpg"},{"id":"60d0fe4f5311236168a109d9","title":"ms","firstName":"Nuria","lastName":"Leon","picture":"https://randomuser.me/api/portraits/med/women/93.jpg"},{"id":"60d0fe4f5311236168a109da","title":"mr","firstName":"Lance","lastName":"Foster","picture":"https://randomuser.me/api/portraits/med/men/13.jpg"},{"id":"60d0fe4f5311236168a109db","title":"miss","firstName":"Naomi","lastName":"Rodrigues","picture":"https://randomuser.me/api/portraits/med/women/39.jpg"},{"id":"60d0fe4f5311236168a109dc","title":"mr","firstName":"Evan","lastName":"Roux","picture":"https://randomuser.me/api/portraits/med/men/59.jpg"},{"id":"60d0fe4f5311236168a109dd","title":"mr","firstName":"Miguel","lastName":"Lima","picture":"https://randomuser.me/api/portraits/med/men/31.jpg"},{"id":"60d0fe4f5311236168a109de","title":"miss","firstName":"Bessie","lastName":"Burke","picture":"https://randomuser.me/api/portraits/med/women/72.jpg"},{"id":"60d0fe4f5311236168a109df","title":"mrs","firstName":"Anaelle","lastName":"Dumas","picture":"https://randomuser.me/api/portraits/med/women/25.jpg"},{"id":"60d0fe4f5311236168a109e0","title":"miss","firstName":"Milly","lastName":"Norman","picture":"https://randomuser.me/api/portraits/med/women/31.jpg"},{"id":"60d0fe4f5311236168a109e1","title":"mr","firstName":"James","lastName":"Black","picture":"https://randomuser.me/api/portraits/med/men/29.jpg"},{"id":"60d0fe4f5311236168a109e2","title":"mr","firstName":"Heinz-Georg","lastName":"Fiedler","picture":"https://randomuser.me/api/portraits/med/men/81.jpg"},{"id":"60d0fe4f5311236168a109e3","title":"mr","firstName":"Vetle","lastName":"Aasland","picture":"https://randomuser.me/api/portraits/med/men/97.jpg"},{"id":"60d0fe4f5311236168a109e4","title":"mr","firstName":"Pwry","lastName":"Shylyrd","picture":"https://randomuser.me/api/portraits/med/men/37.jpg"},{"id":"60d0fe4f5311236168a109e5","title":"mr","firstName":"Adrian","lastName":"Rodriguez","picture":"https://randomuser.me/api/portraits/med/men/45.jpg"},{"id":"60d0fe4f5311236168a109e6","title":"miss","firstName":"Milla","lastName":"Pollari","picture":"https://randomuser.me/api/portraits/med/women/89.jpg"},{"id":"60d0fe4f5311236168a109e7","title":"mr","firstName":"Joey","lastName":"Oliver","picture":"https://randomuser.me/api/portraits/med/men/61.jpg"}];
 
+class Main extends React.Component{
+    
+   allUserData=[];
 
-function Main()
-{
-    return (<div className="main-content" >
-        <UsersList users={data} />
+    constructor(){
+        super();
+        this.state={data:[], isLoading:true,searchValue:""}
+    }
+
+    componentDidMount(){
+        fetch("https://dummyapi.io/data/v1/user",{
+          headers:{
+            "app-id":"61ed31db887c0138889d09ee"
+          }
+        })
+        .then(data=>data.json())
+        .then(userData=>{
+            this.allUserData=userData.data;
+          this.setState({data:userData.data,isLoading:false});
+        })
+      }
+
+      onSearchFieldChange(e){
+
+        const fieldValue = e.target.value;     
+          
+          const newData= this.allUserData.filter((user)=>{
+              return user.firstName.toLowerCase().startsWith(fieldValue.toLowerCase());
+          })
+
+          this.setState({searchValue:fieldValue,data:newData});
+      }
+    
+
+    render(){
+        return(<div className="main-content" >
+            <h1>Applied Candidates</h1>
+
+            <div>
+                <input onChange={(e)=>this.onSearchFieldChange(e)} value={this.state.searchValue} type="text"/>
+            </div>
+        
+        {
+            (this.state.isLoading)? <div className="spinner-div" ><Spinner/></div>:
+            <UsersList users={this.state.data} />
+        }
         </div>);
+    }
 }
+
 
 
 export default Main;
