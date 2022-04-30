@@ -1,0 +1,59 @@
+.single-user-parent{
+    position: relative;
+    border:1px solid black;
+    height:90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.single-user-div{
+    border:1px solid black;
+    min-height:400px;
+    width:80vw;;
+    min-width:350px;
+    margin: 0 auto;
+    display: flex;
+justify-content: space-between;
+}
+
+.single-user-div-img{
+    border:1px solid black;
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.single-user-div-img img{
+    height:75%;
+    width:75%;
+    border-radius:4px;
+    border:1px solid black;
+}
+
+.single-user-div-details{
+    border:1px solid black;
+    flex:2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.single-user-div-details-inner{
+    border:1px solid black;
+    height:75%;
+    width:75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.single-user-parent-button{
+    position: absolute;
+    top:5px;
+    left:5px;
+}

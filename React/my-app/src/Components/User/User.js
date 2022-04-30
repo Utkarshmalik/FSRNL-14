@@ -3,13 +3,13 @@ import './User.css';
 
 
 
-function User(props){
+function User({userProps}){
 
-    const userData=props.userData;
+    const userData=userProps.user;
 
 
 
-    return <div className="user-div" >
+    return <div  onClick={()=>userProps.onClick(userData.id)} className="user-div" >
         <Card>
   <Card.Img className="user-div-img"   variant="top" src={userData.picture} />
   <Card.Body>
