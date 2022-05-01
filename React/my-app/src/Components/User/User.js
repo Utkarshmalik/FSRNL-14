@@ -1,5 +1,6 @@
 import {Card,Button} from 'react-bootstrap';
 import './User.css';
+import {Link} from 'react-router-dom';
 
 
 
@@ -9,7 +10,8 @@ function User({userProps}){
 
 
 
-    return <div  onClick={()=>userProps.onClick(userData.id)} className="user-div" >
+    return <div  className="user-div" >
+      
         <Card>
   <Card.Img className="user-div-img"   variant="top" src={userData.picture} />
   <Card.Body>
@@ -18,7 +20,9 @@ function User({userProps}){
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Button variant="primary">See More Details </Button>
+    <Link to={`/users/${userData.id}`} >
+    <Button  onClick={()=>userProps.onClick(userData.id)} variant="primary">See More Details </Button>
+    </Link>
   </Card.Body>
 </Card>
     </div>

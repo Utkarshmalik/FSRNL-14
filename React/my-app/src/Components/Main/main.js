@@ -1,27 +1,28 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import './main.css';
 import UsersList from '../UsersList/UsersList';
-import SingleUserView from '../SingleUser/SingleUser';
 import Spinner  from '../Common/Spinner/spinner';
 import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
 
 
-class Main extends React.Component{
+let allUserData=[];
+
+
+function Main(){
     
-   allUserData=[];
-
-    constructor(){
-        super();
-        this.state={data:[], isLoading:true,searchValue:"",singleView:null}
-    }
+    const [data,changeData] = useState([]);
+    const [isLoading,changeIsLoading] = useState(true);
+    const [searchValue,changeSearchValue] = useState("");
 
 
-    reset()
+    function reset()
     {
-        this.setState({data:[], isLoading:true,searchValue:"",singleView:null});
+        changeData([]);
+        changeIsLoading(true);
+        changeSearchValue("");
     }
 
-    UpdateData()
+    function UpdateData()
     {
         fetch("https://dummyapi.io/data/v1/user",{
             headers:{
@@ -30,60 +31,51 @@ class Main extends React.Component{
           })
           .then(data=>data.json())
           .then(userData=>{
-              this.allUserData=userData.data;
-            this.setState({data:userData.data,isLoading:false});
+              allUserData=userData.data;
+              console.log(allUserData);
+
+              changeData(userData.data);
+              changeIsLoading(false);
           })
     }
 
-    componentDidMount(){
-        this.UpdateData();
-      }
+    useEffect(()=>{
+        UpdateData();
+    },[]);
 
-      onSearchFieldChange(e){
-        const fieldValue = e.target.value;     
+
+      function onSearchFieldChange(e){
+        const fieldValue = e.target.value; 
+        console.log(allUserData);
+   
           
-          const newData= this.allUserData.filter((user)=>{
+          const newData= allUserData.filter((user)=>{
               return user.firstName.toLowerCase().startsWith(fieldValue.toLowerCase());
           })
 
-          this.setState({searchValue:fieldValue,data:newData});
+          changeSearchValue(fieldValue);
+          changeData(newData);
       }
 
-      onUserClick(id){
-        this.setState({singleView:id});
-        }
+   
 
-        onBackButtonClick()
+        function onBackButtonClick()
         {
-            this.reset();
-            this.UpdateData();
+            reset();
+            UpdateData();
         }
     
 
-    render(){
         return(<div className="main-content" >
-
-            {
-                (!this.state.singleView)?( 
-                
-                <>
                  <h1>Applied Candidates</h1>
                     <div>
-                        <input onChange={(e)=>this.onSearchFieldChange(e)} value={this.state.searchValue} type="text"/>
+                        <input onChange={(e)=>onSearchFieldChange(e)} value={searchValue} type="text"/>
                     </div>
                 {
-                    (this.state.isLoading)? <div className="spinner-div" ><Spinner/></div>:
-                  (<UsersList userProps={ {data:this.state.data, onClick:this.onUserClick.bind(this)} } />)
+                    (isLoading)? <div className="spinner-div" ><Spinner/></div>:
+                  (<UsersList userProps={{data:data}} />)
                 }
-                </>
-                ):
-                <SingleUserView onBackButtonClick={this.onBackButtonClick.bind(this)} id={this.state.singleView} />
-                }
-
-
-        
         </div>);
-    }
 }
 
 

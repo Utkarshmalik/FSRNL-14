@@ -1,6 +1,7 @@
 import React from "react";
 import {Form, Button} from 'react-bootstrap';
 import './Login.css';
+import {Link} from 'react-router-dom';
 
 function onClick()
 {
@@ -26,9 +27,10 @@ function LoginForm(props){
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button onClick={props.onLogin}  variant="primary">
+         <Link to="/users"><Button variant="primary">
           Submit
         </Button>
+        </Link> 
       </Form>
       </div>
       )
