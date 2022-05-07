@@ -3,7 +3,8 @@ import './main.css';
 import UsersList from '../UsersList/UsersList';
 import Spinner  from '../Common/Spinner/spinner';
 import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
-
+import Navbar from '../Navbar/Navbar';
+import AuthHoc from '../../HOC/AuthHOC';
 
 let allUserData=[];
 
@@ -66,7 +67,10 @@ function Main(){
         }
     
 
-        return(<div className="main-content" >
+        return(
+          <AuthHoc authorizedPermissions={['admin']}  >
+        <div className="main-content" >
+          <Navbar/>
                  <h1>Applied Candidates</h1>
                     <div>
                         <input onChange={(e)=>onSearchFieldChange(e)} value={searchValue} type="text"/>
@@ -75,9 +79,10 @@ function Main(){
                     (isLoading)? <div className="spinner-div" ><Spinner/></div>:
                   (<UsersList userProps={{data:data}} />)
                 }
-        </div>);
+        </div>
+        </AuthHoc>
+        );
 }
 
 
-
-export default Main;
+export default  Main;

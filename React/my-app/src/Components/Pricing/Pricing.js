@@ -1,6 +1,8 @@
+import AuthHOC from "../../HOC/AuthHOC";
+
 function Pricing()
 {
-    return <h1>Pricing Component</h1>
+    return <AuthHOC><h1>Pricing Component</h1></AuthHOC>
 }
 
 export default Pricing;

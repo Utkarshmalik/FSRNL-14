@@ -1,9 +1,19 @@
 import React from 'react';
 import {Navbar, Container, Nav} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate } from 'react-router-dom';
 
-function Header()
+
+function onLogout(navigate){
+  localStorage.removeItem("loggedInUser");
+  navigate("/login");
+}
+
+function Header(props)
 {
+  let navigate= useNavigate();
+
+
+
     return (<Navbar bg="light" variant="light">
     <Container>
     <Navbar.Brand>JOB FINDER</Navbar.Brand>
@@ -13,6 +23,7 @@ function Header()
         <Link style={{margin:"5px"}} to="/pricing" ><Nav>Pricing</Nav></Link>
     </Nav>
     </Container>
+    <button onClick={()=>onLogout(navigate)} >Logout</button>
   </Navbar>);
 
 }

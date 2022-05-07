@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import Spinner from '../Common/Spinner/spinner';
 import { useParams } from "react-router-dom";
 import './SingleUser.css';
+import AuthHoc from '../../HOC/AuthHOC';
 
 
 
@@ -24,7 +25,8 @@ function SingleUser()
           })
     },[]);
 
-    return <div className="single-user-parent">
+    return <AuthHoc  > 
+    <div className="single-user-parent">
 {
 (!userDetails)?<Spinner/>:
 (            
@@ -46,6 +48,7 @@ function SingleUser()
 )
 }
 </div>
+</AuthHoc> 
 }
 
 

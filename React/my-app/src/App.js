@@ -34,10 +34,10 @@ function App(){
   let navigate = useNavigate();
 
     return (<div>
-      <Navbar/>
 
       <Routes>
       <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="users" element={<Main />} />
       <Route path="users/:id" element={<SingleUser />} />
       <Route path="features" element={<Features />} />
