@@ -9,6 +9,8 @@ import AuthHoc from '../../HOC/AuthHOC';
 let allUserData=[];
 
 
+
+
 function Main(){
     
     const [data,changeData] = useState([]);
@@ -25,7 +27,7 @@ function Main(){
 
     function UpdateData()
     {
-        fetch("https://dummyapi.io/data/v1/user",{
+        fetch("http://localhost:3000/users",{
             headers:{
               "app-id":"61ed31db887c0138889d09ee"
             }
@@ -68,7 +70,6 @@ function Main(){
     
 
         return(
-          <AuthHoc authorizedPermissions={['admin']}  >
         <div className="main-content" >
           <Navbar/>
                  <h1>Applied Candidates</h1>
@@ -80,7 +81,6 @@ function Main(){
                   (<UsersList userProps={{data:data}} />)
                 }
         </div>
-        </AuthHoc>
         );
 }
 

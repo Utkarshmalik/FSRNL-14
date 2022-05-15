@@ -13,7 +13,7 @@ function SingleUser()
     let [userDetails,changeUserDetails] = useState(null);
 
     useEffect(()=>{
-        fetch(`https://dummyapi.io/data/v1/user/${params.id}`,{
+        fetch(`http://localhost:3000/users/${params.id}`,{
             headers:{
               "app-id":"61ed31db887c0138889d09ee"
             }
@@ -25,8 +25,7 @@ function SingleUser()
           })
     },[]);
 
-    return <AuthHoc  > 
-    <div className="single-user-parent">
+    return <div className="single-user-parent">
 {
 (!userDetails)?<Spinner/>:
 (            
@@ -48,7 +47,6 @@ function SingleUser()
 )
 }
 </div>
-</AuthHoc> 
 }
 
 
