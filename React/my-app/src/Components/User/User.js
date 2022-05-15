@@ -20,8 +20,8 @@ function User({userProps}){
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Link to={`/users/${userData.id}`} >
-    <Button  onClick={()=>userProps.onClick(userData.id)} variant="primary">See More Details </Button>
+    <Link to={`/users/${userData._id}`} >
+    <Button  onClick={()=>userProps.onClick(userData._id)} variant="primary">See More Details </Button>
     </Link>
   </Card.Body>
 </Card>

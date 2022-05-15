@@ -23,17 +23,19 @@ function LoginForm(){
 
 
   function onSubmit(){
+    navigate('/users');
+
     const users = JSON.parse(localStorage.getItem("users")).users;
 
-    users.forEach((user)=>{
-      if(user.userName === email && user.password === password){
-        //valid user
-        localStorage.setItem("loggedInUser",JSON.stringify(user));
-        console.log(user);
-        navigate('/users');
-        return;
-      }
-    })
+    // users.forEach((user)=>{
+    //   if(user.userName === email && user.password === password){
+    //     //valid user
+    //     localStorage.setItem("loggedInUser",JSON.stringify(user));
+    //     console.log(user);
+    //     navigate('/users');
+    //     return;
+    //   }
+    // })
   }
 
 
