@@ -1,0 +1,21 @@
+
+
+
+
+
+
+
+
+    Method    URL                                  Action 
+
+    GET     api/tutorials                           getAllTutorials
+    GET     api/tutorials/:id                       get Tutorial by id
+    POST    api/tutorials                           add new tutorial
+    PUT     api/tutorials/:id                       update tutorial by id
+    DELETE  api/tutorials/:id                       delete tutorial by id 
+    DELETE  api/tutorials                           delete all tutorials 
+    GET     api/tutorials/published                 find all published tutorials 
+    GET     api/tutorials?title=["hello"]           find all tutorials for which title contains hello
+
+
+
