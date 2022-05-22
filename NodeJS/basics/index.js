@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 
 
 require("./app/routes/tutorial.routes")(app);
+require("./app/routes/user.routes")(app);
 
 
 const PORT = 3000;

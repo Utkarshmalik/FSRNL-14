@@ -1,4 +1,5 @@
-const TutorialModel=require("../models/tutorial.model");
+const TutorialModel=require("../models/index").tutorial;
+const UserModel=require("../models/index").user;
 
 
 exports.findAll= (req,res)=>{
@@ -37,23 +38,27 @@ exports.findOne= (req,res)=>{
     })
 }
 
-exports.create=(req,res)=>{
-    
+exports.create= async (req,res)=>{
+
+    const userId=req.params.id;
+    const userById = await UserModel.findById(userId);
+
+    if(!userById){
+        res.status(404).send({message:"Invalid owner id"});
+    }
+
     const tutorial = new TutorialModel({
         title:req.body.title,
         description:req.body.description,
-        published: req.body.published ? req.body.published : false
+        published: req.body.published ? req.body.published : false,
+        owner:userId
     })
 
-    tutorial.save()
-    .then(data=>{
-        res.send(data)
-    })
-    .catch(err=>{
-        res.status(500).send({
-            message:err.message
-        })
-    })
+    const data = await tutorial.save();
+    userById.tutorials.push(tutorial);
+    await userById.save();
+
+    return res.send(userById);
 }
 
 
