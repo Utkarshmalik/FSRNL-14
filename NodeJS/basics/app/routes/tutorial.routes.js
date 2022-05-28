@@ -1,4 +1,5 @@
 const tutorialControllers= require("../controllers/tutorial.controllers");
+const verifyToken = require('../middlewares/authJWT');
 
 module.exports = app=>{
     app.get("/api/tutorials",tutorialControllers.findAll);
