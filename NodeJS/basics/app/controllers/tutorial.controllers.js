@@ -3,6 +3,12 @@ const UserModel=require("../models/index").user;
 
 
 exports.findAll= (req,res)=>{
+
+    if(req.user.role!=="admin"){
+        return res.status(403).send({message:"Unauthorised access"});
+     }
+
+
     const titleData=req.query.title;
 
     var condition = titleData ? {title:{$regex: new RegExp(titleData)}}: {};
@@ -40,6 +46,11 @@ exports.findOne= (req,res)=>{
 
 exports.create= async (req,res)=>{
 
+
+    if(req.user.role!=="admin"){
+        return res.status(403).send({message:"Unauthorised access"});
+     }
+
     const userId=req.params.id;
     const userById = await UserModel.findById(userId);
 
@@ -63,6 +74,12 @@ exports.create= async (req,res)=>{
 
 
 exports.update = (req,res)=>{
+
+
+    if(req.user.role!=="admin"){
+        return res.status(403).send({message:"Unauthorised access"});
+     }
+
     const id=req.params.id;
 
     TutorialModel.findByIdAndUpdate(id,req.body)
@@ -82,6 +99,12 @@ exports.update = (req,res)=>{
 
 
 exports.delete = (req,res)=>{
+
+
+    if(req.user.role!=="admin"){
+        return res.status(403).send({message:"Unauthorised access"});
+     }
+     
     const id=req.params.id;
 
     TutorialModel.findByIdAndRemove(id)

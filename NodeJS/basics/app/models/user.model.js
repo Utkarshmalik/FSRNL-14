@@ -22,7 +22,12 @@ const UserSchema = new mongoose.Schema({
     },
     tutorials:[
         {type: mongoose.Schema.Types.ObjectId, ref:'Tutorial'}
-    ] 
+    ],
+    role:{
+        type:String,
+        enum:['normal','admin'],
+        required:[true,"Please mention user role"]
+    } 
 },{
     timestamps:true
 })

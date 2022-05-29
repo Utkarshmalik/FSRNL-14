@@ -5,10 +5,13 @@ const jwt= require("jsonwebtoken");
 
 exports.register=(req,res)=>{
 
+    console.log(req.body);
+
     const user = new UserModel({
         name:req.body.name,
         email:req.body.email,
-        hashedPassword:bcrypt.hashSync(req.body.password,8)
+        hashedPassword:bcrypt.hashSync(req.body.password,8),
+        role: req.body.role
     });
 
     user.save()
